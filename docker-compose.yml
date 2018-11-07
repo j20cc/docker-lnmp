@@ -1,0 +1,36 @@
+version: "3.1"
+services:
+
+    redis:
+      image: redis:alpine
+      container_name: docker-redis
+
+    mysql:
+      image: mysql:5.7
+      container_name: docker-mysql
+      working_dir: /app
+      volumes:
+        - .:/app
+      environment:
+        - MYSQL_ROOT_PASSWORD=secret
+      ports:
+        - "8002:3306"
+
+    webserver:
+      image: nginx:alpine
+      container_name: docker-webserver
+      working_dir: /app
+      volumes:
+          - .:/app
+          - ./nginx:/etc/nginx/conf.d
+      ports:
+       - "8000:80"
+
+    php-fpm:
+      build: ./php-fpm
+      container_name: docker-php-fpm
+      working_dir: /app
+      volumes:
+        - .:/app
+        - ./php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
+
