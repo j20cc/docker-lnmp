@@ -7,17 +7,14 @@
 ├── README.md
 ├── docker-compose.yml
 ├── logs
-│  ├── blog_access.log
 │  └── default_access.log
 ├── nginx
-│  ├── project.test.conf
 │  └── default.conf
 ├── php-fpm
 │  ├── Dockerfile
 │  ├── php-ini-overrides.ini
 │  └── sources.list     //阿里云apt源
 └── www  //项目目录
-    ├── project
     └── default
 ```
 
