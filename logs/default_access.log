@@ -1,2 +1,6 @@
 172.28.0.1 - - [07/Nov/2018:03:43:49 +0000] "GET / HTTP/1.1" 200 104418 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36"
 172.28.0.1 - - [07/Nov/2018:03:43:50 +0000] "GET /favicon.ico HTTP/1.1" 200 104385 "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36"
+172.18.0.1 - - [07/Nov/2018:10:17:29 +0000] "GET / HTTP/1.1" 200 104418 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36"
+172.18.0.1 - - [07/Nov/2018:10:17:30 +0000] "GET /favicon.ico HTTP/1.1" 200 104386 "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36"
+172.18.0.1 - - [07/Nov/2018:10:19:57 +0000] "GET / HTTP/1.1" 200 104505 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36"
+172.18.0.1 - - [07/Nov/2018:10:19:58 +0000] "GET /favicon.ico HTTP/1.1" 200 104551 "http://localhost:8000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36"

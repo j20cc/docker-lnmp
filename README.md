@@ -47,7 +47,7 @@ location / {
     try_files $uri $uri/ /index.php?$query_string;
 }
 ```
-4. 重启Nginx，`docker-compose exec mysql nginx -s reload`
+4. 重启Nginx，`docker-compose exec webserver nginx -s reload`
 5. 在本地hosts添加`127.0.0.1    blog.test`，浏览器打开[http://blog.test:8000](http://blog.test:8000)
 6. 连接mysql，redis请在`.env`中host为(docker-compose.yml的services的名字)
 ```
