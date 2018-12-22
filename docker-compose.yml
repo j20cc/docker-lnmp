@@ -13,6 +13,7 @@ services:
       working_dir: /app
       volumes:
         - .:/app
+        - ./datadir:/var/lib/mysql
       environment:
         - MYSQL_ROOT_PASSWORD=secret
       ports:
@@ -28,7 +29,7 @@ services:
           - .:/app
           - ./nginx:/etc/nginx/conf.d
       ports:
-        - "8000:80"
+        - "80:80"
       networks:
         - default
 
