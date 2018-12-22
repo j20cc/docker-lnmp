@@ -1,16 +1,24 @@
-FROM phpdockerio/php72-fpm:latest
+FROM php:7.1-fpm
+
 WORKDIR "/app"
 
-# Fix debconf warnings upon build
-ARG DEBIAN_FRONTEND=noninteractive
-
-# 阿里云源
 COPY ./sources.list /etc/apt/sources.list
 
-# 安装PHP扩展
+# 安装php扩展
 RUN apt-get update \
-    && apt-get -y --no-install-recommends install  php7.2-mysql php-redis php-xdebug php7.2-gd php-imagick \
-    && apt-get clean; rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
+    && mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
+    && apt-get install -y --no-install-recommends git zip vim wget curl libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
+    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install -j$(nproc) gd sockets zip \
+    && pecl update-channels \
+    && echo -e "\n\n\n\n" | pecl install swoole \
+    && pecl clear-cache \
+    && docker-php-ext-enable swoole \
+    && apt-get clean && apt-get autoclean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
-# 修改 composer 为国内镜像
-RUN composer config -g repo.packagist composer https://packagist.laravel-china.org
+# 安装composer
+RUN curl --silent https://getcomposer.org/installer | php \
+    && mv composer.phar /usr/local/bin/composer \
+    && composer config -g repo.packagist composer https://packagist.laravel-china.org \
+    && composer global require hirak/prestissimo

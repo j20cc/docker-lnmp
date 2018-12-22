@@ -1,4 +1,4 @@
-### Docker集成多项目LNMP环境(php7.2-fpm+mysql5.7+nginx+redis+composer)
+### Docker集成多项目LNMP环境(php7.1-fpm+mysql5.7+nginx+redis+composer)
 
 ---
 
