@@ -7,13 +7,15 @@ COPY ./sources.list /etc/apt/sources.list
 # 安装php扩展
 RUN apt-get update \
     && mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini" \
-    && apt-get install -y --no-install-recommends git zip unzip vim wget curl libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
+    && apt-get install -y --no-install-recommends --assume-yes git zip unzip vim wget curl \
+        libfreetype6-dev libjpeg62-turbo-dev libpng-dev libmemcached-dev zlib1g-dev \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd sockets zip \
     && pecl update-channels \
     && echo -e "\n\n\n\n" | pecl install swoole \
+    && pecl install memcached \
     && pecl clear-cache \
-    && docker-php-ext-enable swoole \
+    && docker-php-ext-enable swoole memcached \
     && apt-get clean && apt-get autoclean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
 
